@@ -1,0 +1,93 @@
+
+@import './mixins.scss';
+@import './variables.scss';
+
+
+
+body {
+	font-size: 20px;
+	font-family: 'Open Sans Condensed', Arial, sans-serif;
+	color: #444;
+}
+
+h1, h2, h3{
+	text-align: center;
+	font-weight: 300;
+}
+
+button{
+	padding: 0.2rem;
+	font-size: 0.8rem;
+	font-family: 'Open Sans Condensed', Arial, sans-serif;
+	color: #444;
+	border: 1px solid #ccc;
+
+	&:hover{
+		cursor: pointer;
+		color: $link-color;
+	}
+}
+
+a:hover{
+  	cursor: pointer;
+}
+
+.page-header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+    img{
+        max-width: 3rem;
+        max-height: 3rem;
+    }
+
+    h1{
+        margin:0 0 0 1rem;
+        line-height: 1.2em;
+    }
+}
+
+.grid{
+	display: grid;
+	grid-template-columns:repeat(12, 1fr);
+}
+
+
+@for $i from 1 through 6{
+	.col-#{$i}{
+		grid-column: span 6;
+	}
+} 
+@for $i from 6 through 12{
+	.col-#{$i}{
+		grid-column: span 12;
+	}
+}
+
+section{
+  margin: 2rem 0;
+}
+
+
+@media only screen and (min-width : 768px)  {
+
+	// 12 column grid layout. 
+	// .col-1, .col-2, .col-3, etc
+	@for $i from 1 through 12{
+		.col-#{$i}{
+			grid-column: span #{$i};
+		}
+	} 
+}
+
+
+@keyframes App-logo-spin {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}

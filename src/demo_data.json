@@ -1,0 +1,398 @@
+{
+    "copyright" : "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2019. All Rights Reserved.",
+    "teams" : [ {
+      "id" : 1,
+      "name" : "New Jersey Devils",
+      "link" : "/api/v1/teams/1",
+      "venue" : {
+        "name" : "Prudential Center",
+        "link" : "/api/v1/venues/null",
+        "city" : "Newark",
+        "timeZone" : {
+          "id" : "America/New_York",
+          "offset" : -5,
+          "tz" : "EST"
+        }
+      },
+      "abbreviation" : "NJD",
+      "teamName" : "Devils",
+      "locationName" : "New Jersey",
+      "firstYearOfPlay" : "1982",
+      "division" : {
+        "id" : 18,
+        "name" : "Metropolitan",
+        "nameShort" : "Metro",
+        "link" : "/api/v1/divisions/18",
+        "abbreviation" : "M"
+      },
+      "conference" : {
+        "id" : 6,
+        "name" : "Eastern",
+        "link" : "/api/v1/conferences/6"
+      },
+      "franchise" : {
+        "franchiseId" : 23,
+        "teamName" : "Devils",
+        "link" : "/api/v1/franchises/23"
+      },
+      "roster" : {
+        "roster" : [ {
+          "person" : {
+            "id" : 8471239,
+            "fullName" : "Cory Schneider",
+            "link" : "/api/v1/people/8471239"
+          },
+          "jerseyNumber" : "35",
+          "position" : {
+            "code" : "G",
+            "name" : "Goalie",
+            "type" : "Goalie",
+            "abbreviation" : "G"
+          }
+        }, {
+          "person" : {
+            "id" : 8475149,
+            "fullName" : "Marcus Johansson",
+            "link" : "/api/v1/people/8475149"
+          },
+          "jerseyNumber" : "90",
+          "position" : {
+            "code" : "L",
+            "name" : "Left Wing",
+            "type" : "Forward",
+            "abbreviation" : "LW"
+          }
+        }, {
+          "person" : {
+            "id" : 8475791,
+            "fullName" : "Taylor Hall",
+            "link" : "/api/v1/people/8475791"
+          },
+          "jerseyNumber" : "9",
+          "position" : {
+            "code" : "L",
+            "name" : "Left Wing",
+            "type" : "Forward",
+            "abbreviation" : "LW"
+          }
+        }, {
+          "person" : {
+            "id" : 8479315,
+            "fullName" : "Joey Anderson",
+            "link" : "/api/v1/people/8479315"
+          },
+          "jerseyNumber" : "49",
+          "position" : {
+            "code" : "R",
+            "name" : "Right Wing",
+            "type" : "Forward",
+            "abbreviation" : "RW"
+          }
+        }, {
+          "person" : {
+            "id" : 8477961,
+            "fullName" : "John Quenneville",
+            "link" : "/api/v1/people/8477961"
+          },
+          "jerseyNumber" : "47",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8470619,
+            "fullName" : "Brian Boyle",
+            "link" : "/api/v1/people/8470619"
+          },
+          "jerseyNumber" : "11",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8471226,
+            "fullName" : "Drew Stafford",
+            "link" : "/api/v1/people/8471226"
+          },
+          "jerseyNumber" : "18",
+          "position" : {
+            "code" : "R",
+            "name" : "Right Wing",
+            "type" : "Forward",
+            "abbreviation" : "RW"
+          }
+        }, {
+          "person" : {
+            "id" : 8471233,
+            "fullName" : "Travis Zajac",
+            "link" : "/api/v1/people/8471233"
+          },
+          "jerseyNumber" : "19",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8472382,
+            "fullName" : "Andy Greene",
+            "link" : "/api/v1/people/8472382"
+          },
+          "jerseyNumber" : "6",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8473933,
+            "fullName" : "Ben Lovejoy",
+            "link" : "/api/v1/people/8473933"
+          },
+          "jerseyNumber" : "12",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8475151,
+            "fullName" : "Kyle Palmieri",
+            "link" : "/api/v1/people/8475151"
+          },
+          "jerseyNumber" : "21",
+          "position" : {
+            "code" : "R",
+            "name" : "Right Wing",
+            "type" : "Forward",
+            "abbreviation" : "RW"
+          }
+        }, {
+          "person" : {
+            "id" : 8475222,
+            "fullName" : "Sami Vatanen",
+            "link" : "/api/v1/people/8475222"
+          },
+          "jerseyNumber" : "45",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8476234,
+            "fullName" : "Keith Kinkaid",
+            "link" : "/api/v1/people/8476234"
+          },
+          "jerseyNumber" : "1",
+          "position" : {
+            "code" : "G",
+            "name" : "Goalie",
+            "type" : "Goalie",
+            "abbreviation" : "G"
+          }
+        }, {
+          "person" : {
+            "id" : 8476399,
+            "fullName" : "Blake Coleman",
+            "link" : "/api/v1/people/8476399"
+          },
+          "jerseyNumber" : "20",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8476474,
+            "fullName" : "Stefan Noesen",
+            "link" : "/api/v1/people/8476474"
+          },
+          "jerseyNumber" : "23",
+          "position" : {
+            "code" : "R",
+            "name" : "Right Wing",
+            "type" : "Forward",
+            "abbreviation" : "RW"
+          }
+        }, {
+          "person" : {
+            "id" : 8476923,
+            "fullName" : "Damon Severson",
+            "link" : "/api/v1/people/8476923"
+          },
+          "jerseyNumber" : "28",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8477355,
+            "fullName" : "Will Butcher",
+            "link" : "/api/v1/people/8477355"
+          },
+          "jerseyNumber" : "8",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8477425,
+            "fullName" : "Miles Wood",
+            "link" : "/api/v1/people/8477425"
+          },
+          "jerseyNumber" : "44",
+          "position" : {
+            "code" : "L",
+            "name" : "Left Wing",
+            "type" : "Forward",
+            "abbreviation" : "LW"
+          }
+        }, {
+          "person" : {
+            "id" : 8477463,
+            "fullName" : "Steven Santini",
+            "link" : "/api/v1/people/8477463"
+          },
+          "jerseyNumber" : "16",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8477509,
+            "fullName" : "Mirco Mueller",
+            "link" : "/api/v1/people/8477509"
+          },
+          "jerseyNumber" : "25",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        }, {
+          "person" : {
+            "id" : 8478401,
+            "fullName" : "Pavel Zacha",
+            "link" : "/api/v1/people/8478401"
+          },
+          "jerseyNumber" : "37",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8478406,
+            "fullName" : "Mackenzie Blackwood",
+            "link" : "/api/v1/people/8478406"
+          },
+          "jerseyNumber" : "29",
+          "position" : {
+            "code" : "G",
+            "name" : "Goalie",
+            "type" : "Goalie",
+            "abbreviation" : "G"
+          }
+        }, {
+          "person" : {
+            "id" : 8478881,
+            "fullName" : "Brett Seney",
+            "link" : "/api/v1/people/8478881"
+          },
+          "jerseyNumber" : "43",
+          "position" : {
+            "code" : "L",
+            "name" : "Left Wing",
+            "type" : "Forward",
+            "abbreviation" : "LW"
+          }
+        }, {
+          "person" : {
+            "id" : 8479407,
+            "fullName" : "Jesper Bratt",
+            "link" : "/api/v1/people/8479407"
+          },
+          "jerseyNumber" : "63",
+          "position" : {
+            "code" : "L",
+            "name" : "Left Wing",
+            "type" : "Forward",
+            "abbreviation" : "LW"
+          }
+        }, {
+          "person" : {
+            "id" : 8480002,
+            "fullName" : "Nico Hischier",
+            "link" : "/api/v1/people/8480002"
+          },
+          "jerseyNumber" : "13",
+          "position" : {
+            "code" : "C",
+            "name" : "Center",
+            "type" : "Forward",
+            "abbreviation" : "C"
+          }
+        }, {
+          "person" : {
+            "id" : 8480760,
+            "fullName" : "Cameron Johnson",
+            "link" : "/api/v1/people/8480760"
+          },
+          "jerseyNumber" : "33",
+          "position" : {
+            "code" : "G",
+            "name" : "Goalie",
+            "type" : "Goalie",
+            "abbreviation" : "G"
+          }
+        }, {
+          "person" : {
+            "id" : 8480948,
+            "fullName" : "Egor Yakovlev",
+            "link" : "/api/v1/people/8480948"
+          },
+          "jerseyNumber" : "74",
+          "position" : {
+            "code" : "D",
+            "name" : "Defenseman",
+            "type" : "Defenseman",
+            "abbreviation" : "D"
+          }
+        } ],
+        "link" : "/api/v1/teams/1/roster"
+      },
+      "shortName" : "New Jersey",
+      "officialSiteUrl" : "http://www.newjerseydevils.com/",
+      "franchiseId" : 23,
+      "active" : true
+    } ]
+  }

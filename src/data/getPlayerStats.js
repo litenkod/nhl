@@ -68,11 +68,11 @@ export class PlayerStats extends React.Component {
         if(position === 'G'){
             console.log('Goalie')
             player.push(
-                <div className="player-stats no-stats" key={playerId}> No stats </div>
+                <div className="no-stats" key={playerId}> No stats </div>
             )
         } else{
             player.push(
-                <div className="player-stats" key={playerId}>
+                <div key={playerId}>
                     <span className="games">GP{playerStats.games} </span>
                     <span className="goal">G{playerStats.goals} </span>
                     <span className="assists">A{playerStats.assists} </span>

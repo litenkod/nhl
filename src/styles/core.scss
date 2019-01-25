@@ -6,7 +6,7 @@
 body {
 	font-size: 20px;
 	font-family: 'Open Sans Condensed', Arial, sans-serif;
-	color: #444;
+	color: $font-color;
 }
 
 *:focus {
@@ -21,7 +21,7 @@ button{
 	padding: 0.2rem;
 	font-size: 0.8rem;
 	font-family: 'Open Sans Condensed', Arial, sans-serif;
-	color: #444;
+	color: $font-color;
 	border: 1px solid #ccc;
 
 	&:hover{

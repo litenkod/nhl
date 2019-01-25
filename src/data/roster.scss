@@ -110,6 +110,29 @@
             bottom: 0;
         }
     }
+
+    .player-stats{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        color: #fff;
+        background: $font-color;
+        
+
+        .no-stats{
+            font-size: 0.8rem;
+            color: #fff;
+            background: $font-color;
+        }
+
+        .totalScore{
+            width: 100%;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+    }
 }
 
 @media only screen and (min-width : 480px)  {

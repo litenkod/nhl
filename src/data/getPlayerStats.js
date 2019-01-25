@@ -12,7 +12,7 @@ export class PlayerStats extends React.Component {
         super(props);
 
         this.state = {
-            player: {}
+            playerStats: {}
         };
     }
 
@@ -27,20 +27,76 @@ export class PlayerStats extends React.Component {
             fetch(API)
                 .then(response => response.json())
                 .then(data => {
-                    // this.setState({player: data.stats[0]})
-                    // console.log('playerStats: ', data.stats[0]);
+                    this.setState({playerStats: data.stats[0].splits[0].stat})
+                    // console.log('playerStats: ', data.stats[0].splits[0].stat);
                 });
         }
     }
 
+    calcScore(playerStats, pos) {
+    
+            var goalMod = 2;
+            var assMod = 1;
+            var pimMod = 0.5;
+            var gwgMod = 2;
+            var shgMod = 2;
+            if(pos === 'D'){
+                goalMod = 4;
+                assMod = 2;
+                gwgMod = 3;
+                shgMod = 3;
+            }
+
+
+            var goalPoints = playerStats.goals * goalMod;
+            var assPoints = playerStats.assists * assMod;
+            var pimPoints = Math.floor(playerStats.pim * pimMod);
+            var gwgPoints = playerStats.gameWinningGoals * gwgMod;
+            var shgPoints = playerStats.shortHandedGoals * shgMod;
+            
+            var totalPoints = goalPoints + assPoints + pimPoints + gwgPoints + shgPoints;
+            return totalPoints
+        }
+
     render() {
 
+        var { playerStats } = this.state;
+        var { position, playerId } = this.props;
+
+        var score = this.calcScore(playerStats, position)
+        var player = [];
+        if(position === 'G'){
+            console.log('Goalie')
+            player.push(
+                <div className="player-stats no-stats" key={playerId}> No stats </div>
+            )
+        } else{
+            player.push(
+                <div className="player-stats" key={playerId}>
+                    <span className="games">GP{playerStats.games} </span>
+                    <span className="goal">G{playerStats.goals} </span>
+                    <span className="assists">A{playerStats.assists} </span>
+                    <span className="points">P{playerStats.points} </span>
+                    <span className="gameWinningGoals">GWG{playerStats.gameWinningGoals} - </span>
+                    <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} - </span>
+                    <span className="pim">PIM{playerStats.pim}</span>
+                    <span className="totalScore">TotalScore: {score}</span>
+                </div>
+            )
+        }
+
         return(
-            <span className="player-info">
-                {/* {this.state.player.captain === true ? <span className="cap">C</span> : ''}
-                {this.state.player.alternateCaptain === true ? <span className="cap">A</span> : ''}
-                {this.state.player.rookie === true ? <span className="rookie">Rookie</span> : ''} */}
-            </span>
+            <div className="player-stats">
+                {player}
+                {/* <span className="games">GP{playerStats.games} </span>
+                <span className="goal">G{playerStats.goals} </span>
+                <span className="assists">A{playerStats.assists} </span>
+                <span className="points">P{playerStats.points} </span>
+                <span className="gameWinningGoals">GWG{playerStats.gameWinningGoals} - </span>
+                <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} - </span>
+                <span className="pim">PIM{playerStats.pim}</span>
+                <span className="totalScore">TotalScore: {score}</span> */}
+            </div>
 
         );
 

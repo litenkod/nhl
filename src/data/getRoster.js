@@ -96,10 +96,10 @@ class Players extends React.Component {
             sortOrder(team.roster.roster, teamSort);
         }
 
-        var currentPlayerId = null;
-        if(this.state !== null && this.state.playerId !== null){
-            currentPlayerId = this.state.playerId
-        }
+        // var currentPlayerId = null;
+        // if(this.state !== null && this.state.playerId !== null){
+        //     currentPlayerId = this.state.playerId
+        // }
 
         return (
             <div className="grid roster-list">
@@ -115,7 +115,7 @@ class Players extends React.Component {
                             <span className="pos">{player.position.type}</span>
                             <Captain playerId={player.person.id} />
                         </div>
-                        <PlayerStats playerId={currentPlayerId} />
+                        <PlayerStats playerId={player.person.id} position={player.position.code} />
                     </div>
                 )}
 

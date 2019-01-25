@@ -29,7 +29,7 @@ export class GetTeams extends React.Component {
 
         return (
         <section>
-            <nav className="team-list">
+            <nav className="team-list" ref="teamList">
                 {helper.sortName(teams).map(team =>
                     <button
                         className={team.id === this.props.temaId ? '-active' : ''}

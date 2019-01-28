@@ -27,9 +27,10 @@ export class GetRoster extends React.Component {
                     this.setState({team: data.teams[0]})
 
                     const playerValue = require('./playerValue.json');
-                    const teamValueList = playerValue.find( item => item.teamName === data.teams[0].name );
+                    const teamValueList = playerValue.find( item => this.cleanName(item.teamName) === this.cleanName(data.teams[0].name));
                     this.setState({teamValues: teamValueList})
 
+                    console.log('teamValueList: ', teamValueList);
                     const compareArray = [teamValueList.player, data.teams[0]];
                     return compareArray;
 
@@ -106,7 +107,7 @@ function sortOrder(players, sortType) {
     } else if(sortType === null){
         sortOrdered = players.sort((a, b) => parseInt(a.jerseyNumber) > parseInt(b.jerseyNumber) ? 1 : -1);
     }
-    
+
 }
 
 class Players extends React.Component {

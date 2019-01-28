@@ -89,6 +89,10 @@ export class PlayerStats extends React.Component {
                 playerPoints.push(
                     <span key={playerId + '_playerValue'} className="playerValue"><span className=" -txt-xl">{playerValue}</span></span>
                 )
+            }else{
+                playerPoints.push(
+                    <span>-No data found-</span>
+                )
             }
             valuePerPoint = (parseInt(score)/parseFloat(playerValue)).toFixed(1);
             if (valuePerPoint >= 0) {

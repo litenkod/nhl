@@ -14,6 +14,7 @@ export class GetRoster extends React.Component {
             team: [],
             playerId: {},
             prevTeamId: null,
+            teamValues: null
         };
     }
 
@@ -24,8 +25,18 @@ export class GetRoster extends React.Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({team: data.teams[0]})
+                    console.log('data.teams[0]: ', data.teams[0]);
+
+                    var playerValue = require('./playerValue.json');
+                    const result = playerValue.find( item => item.teamName === data.teams[0].name );
+                    this.setState({teamValues: result})
+                    console.log('find: ', result)
+
+
                 });
         }
+
+        console.log('this.props: ', this.props);
     }; 
     
     componentDidMount() {
@@ -96,26 +107,18 @@ class Players extends React.Component {
             sortOrder(team.roster.roster, teamSort);
         }
 
-        // var currentPlayerId = null;
-        // if(this.state !== null && this.state.playerId !== null){
-        //     currentPlayerId = this.state.playerId
-        // }
-
         return (
             <div className="grid roster-list">
                 {roster.map(player =>
                     <div className="player" key={player.person.id} data-key={player.person.id}  >
-                        {/* <button type="button" onClick={this.playerStats.bind(null, player.person.id)} > */}
-                            {/* <img src={`https://assets.nhle.com/mugs/nhl/20182019/${team.abbreviation}/${player.person.id}.png`} /> */}
-                            <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
-                        {/* </button> */}
+                        <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
                         <div className="info">
                             <span className="no">{player.jerseyNumber}</span>
                             <span className="name">{player.person.fullName}</span>
                             <span className="pos">{player.position.type}</span>
                             <Captain playerId={player.person.id} />
                         </div>
-                        <PlayerStats playerId={player.person.id} position={player.position.code} />
+                        <PlayerStats playerId={player.person.id} position={player.position.code} teamName={team.name} />
                     </div>
                 )}
 

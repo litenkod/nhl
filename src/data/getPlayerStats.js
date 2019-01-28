@@ -27,14 +27,17 @@ export class PlayerStats extends React.Component {
             fetch(API)
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({playerStats: data.stats[0].splits[0].stat})
-                    // console.log('playerStats: ', data.stats[0].splits[0].stat);
+                    if(data.stats[0].splits[0] !== undefined){
+                        this.setState({playerStats: data.stats[0].splits[0].stat})
+                    }else{
+                        console.log('data.stats[0]: ', data.stats[0]);
+                    }
                 });
         }
     }
+    
 
     calcScore(playerStats, pos) {
-    
             var goalMod = 2;
             var assMod = 1;
             var pimMod = 0.5;
@@ -47,26 +50,25 @@ export class PlayerStats extends React.Component {
                 shgMod = 3;
             }
 
-
             var goalPoints = playerStats.goals * goalMod;
             var assPoints = playerStats.assists * assMod;
             var pimPoints = Math.floor(playerStats.pim * pimMod);
             var gwgPoints = playerStats.gameWinningGoals * gwgMod;
             var shgPoints = playerStats.shortHandedGoals * shgMod;
-            
+
             var totalPoints = goalPoints + assPoints + pimPoints + gwgPoints + shgPoints;
+
             return totalPoints
         }
 
     render() {
 
         var { playerStats } = this.state;
-        var { position, playerId } = this.props;
+        var { position, playerId, teamName } = this.props;
 
         var score = this.calcScore(playerStats, position)
         var player = [];
         if(position === 'G'){
-            console.log('Goalie')
             player.push(
                 <div className="no-stats" key={playerId}> No stats </div>
             )
@@ -77,8 +79,8 @@ export class PlayerStats extends React.Component {
                     <span className="goal">G{playerStats.goals} </span>
                     <span className="assists">A{playerStats.assists} </span>
                     <span className="points">P{playerStats.points} </span>
-                    <span className="gameWinningGoals">GWG{playerStats.gameWinningGoals} - </span>
-                    <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} - </span>
+                    <span className="gameWinningGoals"> - GWG{playerStats.gameWinningGoals} </span>
+                    <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} </span>
                     <span className="pim">PIM{playerStats.pim}</span>
                     <span className="totalScore">TotalScore: {score}</span>
                 </div>
@@ -88,14 +90,6 @@ export class PlayerStats extends React.Component {
         return(
             <div className="player-stats">
                 {player}
-                {/* <span className="games">GP{playerStats.games} </span>
-                <span className="goal">G{playerStats.goals} </span>
-                <span className="assists">A{playerStats.assists} </span>
-                <span className="points">P{playerStats.points} </span>
-                <span className="gameWinningGoals">GWG{playerStats.gameWinningGoals} - </span>
-                <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} - </span>
-                <span className="pim">PIM{playerStats.pim}</span>
-                <span className="totalScore">TotalScore: {score}</span> */}
             </div>
 
         );

@@ -19,10 +19,6 @@ export class Page1 extends React.Component {
         this.setState({
             teamId: ID
         });
-
-        console.log('this: ', this);
-        console.log('window: ', window);
-        // window.scrollTo(0, this.myRef.current.offsetTop)
     }
 
     updateSortOrder = (event, sortType) =>{
@@ -32,8 +28,6 @@ export class Page1 extends React.Component {
     }
 
     render() {
-        console.log('this.props: ', this.props);
-        console.log('this.state: ', this.state);
         return (
         <div>
             <section className="page-header">

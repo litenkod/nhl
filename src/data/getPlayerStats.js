@@ -64,15 +64,39 @@ export class PlayerStats extends React.Component {
     render() {
 
         var { playerStats } = this.state;
-        var { position, playerId, teamName } = this.props;
+        var { position, playerId, playerValue } = this.props;
 
+        // console.log('playerValue: ', playerValue);
+
+        
         var score = this.calcScore(playerStats, position)
+        var valuePerPoint = null
         var player = [];
         if(position === 'G'){
             player.push(
-                <div className="no-stats" key={playerId}> No stats </div>
+                <div className="no-stats" key={playerId}> No stats available</div>
             )
         } else{
+
+            var playerPoints = [];
+            if (score) {
+                playerPoints.push(
+                    <span key={playerId + '_score'} className="totalScore">TotalScore: <span className=" -txt-l">{score}</span></span>
+                )
+            }
+            if (playerValue !== null){
+                playerValue += ' MSEK'
+                playerPoints.push(
+                    <span key={playerId + '_playerValue'} className="playerValue"><span className=" -txt-xl">{playerValue}</span></span>
+                )
+            }
+            valuePerPoint = (parseInt(score)/parseFloat(playerValue)).toFixed(1);
+            if (valuePerPoint >= 0) {
+                playerPoints.push(
+                    <span key={playerId + '_valuePerPoint'} className="valuePerPoint">Points/MSEK <span className=" -txt-xl">{valuePerPoint}</span></span>
+                )
+            }
+
             player.push(
                 <div key={playerId}>
                     <span className="games">GP{playerStats.games} </span>
@@ -82,7 +106,9 @@ export class PlayerStats extends React.Component {
                     <span className="gameWinningGoals"> - GWG{playerStats.gameWinningGoals} </span>
                     <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} </span>
                     <span className="pim">PIM{playerStats.pim}</span>
-                    <span className="totalScore">TotalScore: {score}</span>
+                    <div className="score-wrapper">
+                        {playerPoints}
+                    </div>
                 </div>
             )
         }

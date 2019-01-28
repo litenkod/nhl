@@ -46,7 +46,7 @@
 .player{
     position: relative;
     display: grid;
-    grid-template-rows: auto 3rem;
+    grid-template-rows: auto 5rem;
     grid-template-columns: auto 5fr;
     grid-column-gap: 0.6rem;
     border: 1px solid #ccc;
@@ -127,11 +127,38 @@
             background: $font-color;
         }
 
-        .totalScore{
-            width: 100%;
-            display: inline-block;
+        .score-wrapper{
+            display: flex;
+            flex-flow: wrap row;
+            justify-content: space-between;
+
+            // span < span{
+                
+            // }
+        }
+        .-txt-xl{
             font-weight: 700;
             font-size: 1rem;
+        }
+        .-txt-l{
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .totalScore{
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.4rem;
+        }
+        .playerValue, .valuePerPoint{
+            width: 50%;
+        }
+        .valuePerPoint{
+            text-align: right;
+            color: lightpink;
+
+            &> span{
+                //color: #fff;
+            }
         }
     }
 }

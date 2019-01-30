@@ -29,8 +29,7 @@ export class GetRoster extends React.Component {
                     const playerValue = require('./playerValue.json');
                     const teamValueList = playerValue.find( item => this.cleanName(item.teamName) === this.cleanName(data.teams[0].name));
                     this.setState({teamValues: teamValueList})
-
-                    console.log('teamValueList: ', teamValueList);
+                    
                     const compareArray = [teamValueList.player, data.teams[0]];
                     return compareArray;
 
@@ -79,7 +78,7 @@ export class GetRoster extends React.Component {
                     </div>
                     <a href={team.officialSiteUrl}>{team.officialSiteUrl}</a>
                 </div>
-                <Players team={team} teamSort={this.props.teamSort}/>
+                <Players team={team} teamSort={this.props.teamSort} savePlayer={this.props.savePlayer}/>
             </section>
         );
     }
@@ -121,6 +120,7 @@ class Players extends React.Component {
     render() {
         const { team, teamSort } = this.props;
         var roster = [];
+
         if (team.roster !== null && team.roster !== undefined) {
             roster = team.roster.roster;
             sortOrder(team.roster.roster, teamSort);
@@ -129,15 +129,22 @@ class Players extends React.Component {
         return (
             <div className="grid roster-list">
                 {roster.map(player =>
-                    <div className="player" key={player.person.id} data-key={player.person.id}  >
-                        <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
+                    <div className="player" key={player.person.id} data-key={player.person.id} >
+                        {/* <button type="button" data-id={player.person.id}> */}
+                            <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
+                        {/* </button> */}
                         <div className="info">
                             <span className="no">{player.jerseyNumber}</span>
                             <span className="name">{player.person.fullName}</span>
                             <span className="pos">{player.position.type}</span>
                             <Captain playerId={player.person.id} />
                         </div>
-                        <PlayerStats playerId={player.person.id} position={player.position.code} teamName={team.name} playerValue={player.value} />
+                        <PlayerStats key={player.person.id + '_player'} playerId={player.person.id} position={player.position.code} teamName={team.name} playerValue={player.value} />
+                        <button 
+                            type="button" 
+                            className="save-player" 
+                            onClick={this.props.savePlayer.bind(null, [player.person.id, player.person.fullName, player.position.code, player.value])}>
+                        </button>
                     </div>
                 )}
             </div>

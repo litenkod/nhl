@@ -35,68 +35,94 @@ export class PlayerStats extends React.Component {
                 });
         }
     }
-    
 
     calcScore(playerStats, pos) {
-            var goalMod = 2;
-            var assMod = 1;
-            var pimMod = 0.5;
-            var gwgMod = 2;
-            var shgMod = 2;
-            if(pos === 'D'){
-                goalMod = 4;
-                assMod = 2;
-                gwgMod = 3;
-                shgMod = 3;
-            }
-
-            var goalPoints = playerStats.goals * goalMod;
-            var assPoints = playerStats.assists * assMod;
-            var pimPoints = Math.floor(playerStats.pim * pimMod);
-            var gwgPoints = playerStats.gameWinningGoals * gwgMod;
-            var shgPoints = playerStats.shortHandedGoals * shgMod;
-
-            var totalPoints = goalPoints + assPoints + pimPoints + gwgPoints + shgPoints;
-
-            return totalPoints
+        var goalMod = 2;
+        var assMod = 1;
+        var pimMod = -0.5;
+        var gwgMod = 2;
+        var shgMod = 2;
+        if(pos === 'D'){
+            goalMod = 4;
+            assMod = 2;
+            gwgMod = 3;
+            shgMod = 3;
         }
+
+        var goalPoints = playerStats.goals * goalMod;
+        var assPoints = playerStats.assists * assMod;
+        var pimPoints = Math.floor(playerStats.pim * pimMod);
+        var gwgPoints = playerStats.gameWinningGoals * gwgMod;
+        var shgPoints = playerStats.shortHandedGoals * shgMod;
+
+        var totalPoints = goalPoints + assPoints + gwgPoints + shgPoints + pimPoints;
+
+        return totalPoints
+    }
 
     render() {
 
         var { playerStats } = this.state;
         var { position, playerId, playerValue } = this.props;
 
-        // console.log('playerValue: ', playerValue);
+        // console.log('this.state: ', this.state);
+        // console.log('this.props: ', this.props);
 
         
         var score = this.calcScore(playerStats, position)
         var valuePerPoint = null
         var player = [];
+        var arrayPlayerPoints = [];
         if(position === 'G'){
+
+            arrayPlayerPoints.push(
+                <span key={playerId + '_score'} className="totalScore">No stats available</span>
+            )
+            if (playerValue !== null){
+                playerValue += ' MSEK'
+                arrayPlayerPoints.push(
+                    <span key={playerId + '_playerValue'} className="playerValue"><span className=" -txt-xl">{playerValue}</span></span>
+                )
+            }else{
+                arrayPlayerPoints.push(
+                    <span key="playerId_nodata">-No data found-</span>
+                )
+            }
+            arrayPlayerPoints.push(
+                <span key={playerId + '_valuePerPoint'} className="valuePerPoint">No stats available</span>
+            )
             player.push(
-                <div className="no-stats" key={playerId}> No stats available</div>
+                <div key={playerId}>
+                    <span className="games">GP{playerStats.games} </span>
+                    <span className="goal">GAA{playerStats.goalAgainstAverage} </span>
+                    <span className="assists">%{playerStats.savePercentage} </span>
+                    <span className="shutouts">SO{playerStats.shutouts} </span>
+                    <span className="win"> - W{playerStats.wins} </span>
+                    <div className="score-wrapper">
+                        {arrayPlayerPoints}
+                    </div>
+                </div>
             )
         } else{
 
-            var playerPoints = [];
             if (score) {
-                playerPoints.push(
+                arrayPlayerPoints.push(
                     <span key={playerId + '_score'} className="totalScore">TotalScore: <span className=" -txt-l">{score}</span></span>
                 )
             }
             if (playerValue !== null){
                 playerValue += ' MSEK'
-                playerPoints.push(
+                arrayPlayerPoints.push(
                     <span key={playerId + '_playerValue'} className="playerValue"><span className=" -txt-xl">{playerValue}</span></span>
                 )
             }else{
-                playerPoints.push(
-                    <span>-No data found-</span>
+                arrayPlayerPoints.push(
+                    <span key="playerId_nodata">-No data found-</span>
                 )
             }
             valuePerPoint = (parseInt(score)/parseFloat(playerValue)).toFixed(1);
             if (valuePerPoint >= 0) {
-                playerPoints.push(
+                arrayPlayerPoints.push(
                     <span key={playerId + '_valuePerPoint'} className="valuePerPoint">Points/MSEK <span className=" -txt-xl">{valuePerPoint}</span></span>
                 )
             }
@@ -111,7 +137,7 @@ export class PlayerStats extends React.Component {
                     <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} </span>
                     <span className="pim">PIM{playerStats.pim}</span>
                     <div className="score-wrapper">
-                        {playerPoints}
+                        {arrayPlayerPoints}
                     </div>
                 </div>
             )

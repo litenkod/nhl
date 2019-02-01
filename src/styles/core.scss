@@ -1,6 +1,5 @@
-
-@import './mixins.scss';
-@import './variables.scss';
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
 
 
 body {
@@ -27,7 +26,36 @@ button{
 	&:hover{
 		cursor: pointer;
 		color: $link-color;
-	}
+    }
+    
+    &.btn-action{
+        position: absolute;
+        z-index: 1;
+        top: -8px;
+        right: -8px;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0.2rem;
+        font-family: monospace;
+        font-size: 2rem;
+        line-height: 1rem;
+        color: #ffff;
+        background: $link-color;            
+        border: 1px solid $link-color;
+        transition: all 0.2s ease; 
+
+        &:hover, 
+        &.-active,
+        &.-close{
+            color: $link-color;
+            background: #fff;
+            border: 1px solid $link-color;
+            transform: rotate(45deg);
+        }
+        &.-active{
+            transform: rotate(45deg);
+        }
+    }
 }
 
 a:hover{
@@ -53,7 +81,16 @@ a:hover{
 
 .grid{
 	display: grid;
-	grid-template-columns:repeat(12, 1fr);
+    grid-template-columns:repeat(12, 1fr);
+
+    // 12 column grid layout. 
+    // .grid-col-1, .grid-col-2, .grid-col-3, etc
+    @for $i from 1 through 12{
+        &.-col-#{$i}{
+            grid-template-columns:repeat(#{$i}, 1fr);
+        }
+    } 
+
 }
 
 
@@ -68,11 +105,6 @@ a:hover{
 	}
 }
 
-section{
-  margin: 2rem 0;
-}
-
-
 @media only screen and (min-width : 768px)  {
 
 	// 12 column grid layout. 
@@ -85,11 +117,16 @@ section{
 }
 
 
-@keyframes App-logo-spin {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
+section{
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+}
+
+.-hidden{
+    height: 0 !important;
+    visibility: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }

@@ -1,0 +1,52 @@
+@import '../styles/core.scss';
+
+.error-msg {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background: rgba(#000, 0.6);
+
+    .text-msg{
+        position: relative;
+        padding: 2rem;
+        border: 2px solid deeppink;
+        background: #fff;
+
+        h3,h4{
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .close{
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            right: -5px;
+            width: 1.6rem;
+            height: 1.6rem;
+            padding: 0.2rem;
+            font-family: monospace;
+            font-size: 2rem;
+            line-height: 1rem;
+            color: #ffff;
+            background: $link-color;
+            border: 1px solid $link-color;
+            transform: rotate(45deg);
+
+            &:hover, &.-active{
+                color: $link-color;
+                background: #fff;
+                border: 1px solid $link-color;
+                transform: rotate(45deg);
+            }
+        }
+    }
+}

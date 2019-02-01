@@ -1,8 +1,8 @@
 
-@import '../styles/core.scss';
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
 
 .team {
-    padding:0 1rem 2rem;
 
     > .info{
         margin-bottom: 2rem;
@@ -41,13 +41,7 @@
         grid-template-rows: auto 5rem;
         grid-template-columns: auto 5fr;
         grid-column-gap: 0.6rem;
-        border: 1px solid #ccc;
-
-        button{
-            padding: 0;
-            border: 0;
-            background: none;
-        }
+        border: 1px solid $font-color;
 
         img{
             max-width: 100%;
@@ -122,18 +116,11 @@
                 flex-flow: wrap row;
                 justify-content: space-between;
             }
-            .-txt-xl{
-                font-weight: 700;
-                font-size: 1rem;
-            }
-            .-txt-l{
-                font-weight: 700;
-                font-size: 0.8rem;
-            }
             .totalScore{
                 width: 100%;
+                margin-bottom: 0.2rem;
+                padding-bottom: 0.6rem;
                 border-bottom: 1px solid #ccc;
-                padding-bottom: 0.4rem;
             }
             .playerValue, .valuePerPoint{
                 width: 50%;
@@ -141,33 +128,6 @@
             .valuePerPoint{
                 text-align: right;
                 color: lightpink;
-            }
-        }
-
-        .save-player{
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 1.6rem;
-            height: 1.6rem;
-            padding: 0.2rem;
-            font-size: 2rem;
-            background: #ffff;
-            background: $link-color;
-            border: 1px solid hotpink;
-            transition: all 0.2s ease; 
-
-            &:hover{
-                background: #fff;
-                border: 1px solid $link-color;
-                transform: rotate(45deg);
-            }
-            &.-active{
-                transform: rotate(45deg);
-
-                &:hover{
-                    transform: rotate(0deg);
-                }
             }
         }
     }

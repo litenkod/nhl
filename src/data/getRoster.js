@@ -69,6 +69,7 @@ export class GetRoster extends React.Component {
     render() {
         const { team } = this.state;
         var img = team.id !== undefined ? <img src={`https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`} alt={team.name}/>: '';
+
         return (
             <section className="team">
                 <div className="info">
@@ -78,8 +79,98 @@ export class GetRoster extends React.Component {
                     </div>
                     <a href={team.officialSiteUrl}>{team.officialSiteUrl}</a>
                 </div>
-                <Players team={team} teamSort={this.props.teamSort} savePlayer={this.props.savePlayer}/>
+                <Players 
+                team={team} 
+                teamSort={this.props.teamSort} 
+                savePlayer={this.props.savePlayer} 
+                savedPlayers={this.props.savedPlayers}
+                removePlayer={this.props.removePlayer}/>
             </section>
+        );
+    }
+}
+
+
+class Players extends React.Component {
+   
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            activePlayerID: [],
+        };
+    }
+
+    playerStats = (event, playerId) =>{
+        this.setState({
+            playerId: event
+        });
+    }
+
+    playerSaveClick = (player, arg) =>{
+
+        let activePlayer = null;
+        const { savedPlayers } = this.props;
+        if (savedPlayers !== undefined || savedPlayers.length >= 0) {
+            activePlayer = savedPlayers.find(item => item[0] === player.person.id);
+            if(activePlayer){
+                //Page1.js
+                this.props.removePlayer(player.person.id);
+            }
+        }
+
+        //Page1.js
+        var savedData = [player.person.id, player.person.fullName, player.position.type, player.value]
+        this.props.savePlayer(savedData);
+    }
+
+    render() {
+        const { team, teamSort, savedPlayers } = this.props;
+        var roster = [];
+
+        if (team.roster !== null && team.roster !== undefined) {
+            roster = team.roster.roster;
+            sortOrder(team.roster.roster, teamSort);
+        }
+
+        var rosterPlayersList = [];
+        roster.forEach(player => {
+
+            var activeId = '';
+            if (savedPlayers.find(item => item[0] === player.person.id)) {
+                activeId = '-active';
+            }
+
+            rosterPlayersList.push(
+                <div className="player" key={player.person.id} data-key={player.person.id} >
+                    <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
+                    <div className="info">
+                        <span className="no">{player.jerseyNumber}</span>
+                        <span className="name">{player.person.fullName}</span>
+                        <span className="pos">{player.position.type}</span>
+                        <Captain playerId={player.person.id} />
+                    </div>
+                    <PlayerStats 
+                        key={player.person.id + '_player'} 
+                        playerId={player.person.id} 
+                        position={player.position.code} 
+                        teamName={team.name} 
+                        playerValue={player.value} />
+
+                    <button 
+                        type="button" 
+                        className={`btn-action ${activeId}`}
+                        onClick={this.playerSaveClick.bind(null, player)}
+                        >+
+                    </button>
+                </div>
+            )
+        })
+
+        return (
+            <div className="grid roster-list">
+                {rosterPlayersList}
+            </div>
         );
     }
 }
@@ -108,47 +199,3 @@ function sortOrder(players, sortType) {
     }
 
 }
-
-class Players extends React.Component {
-
-    playerStats = (event, playerId) =>{
-        this.setState({
-            playerId: event
-        });
-    }
-
-    render() {
-        const { team, teamSort } = this.props;
-        var roster = [];
-
-        if (team.roster !== null && team.roster !== undefined) {
-            roster = team.roster.roster;
-            sortOrder(team.roster.roster, teamSort);
-        }
-
-        return (
-            <div className="grid roster-list">
-                {roster.map(player =>
-                    <div className="player" key={player.person.id} data-key={player.person.id} >
-                        {/* <button type="button" data-id={player.person.id}> */}
-                            <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
-                        {/* </button> */}
-                        <div className="info">
-                            <span className="no">{player.jerseyNumber}</span>
-                            <span className="name">{player.person.fullName}</span>
-                            <span className="pos">{player.position.type}</span>
-                            <Captain playerId={player.person.id} />
-                        </div>
-                        <PlayerStats key={player.person.id + '_player'} playerId={player.person.id} position={player.position.code} teamName={team.name} playerValue={player.value} />
-                        <button 
-                            type="button" 
-                            className="save-player" 
-                            onClick={this.props.savePlayer.bind(null, [player.person.id, player.person.fullName, player.position.code, player.value])}>
-                        </button>
-                    </div>
-                )}
-            </div>
-        );
-    }
-}
-

@@ -2,3 +2,23 @@
 $font-color: #444;
 $link-color: hotpink;
 $bg-color: #efefef;
+
+$font-l:0.8rem;
+$font-xl:1rem;
+
+.-font-size-l{
+    font-size: $font-l;
+}
+.-font-size-xl{
+    font-size: $font-xl;
+}
+
+.-txt-l{
+    font-weight: 700;
+    font-size: $font-l;
+}
+
+.-txt-xl{
+    font-weight: 700;
+    font-size: $font-xl;
+}

@@ -1,0 +1,86 @@
+
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+.saved-players{
+    position: relative;
+    overflow: hidden;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #f1f1f1;
+
+    .grid{
+        grid-column-gap: 0.2rem;
+    }
+
+    .header{
+        margin: 0 0 1rem 0;
+
+        h3 {
+            margin: 0;
+        }
+        .total-value{
+            position: absolute;
+            top: 1.4rem;
+            right: 1rem;
+            font-size: 0.8rem;
+
+            span{
+                color: hotpink;
+                font-size: 1.2rem;
+                font-weight: 700;
+            }
+        }
+    }
+    .player{
+        position: relative;
+        display: grid;
+        grid-template-rows: 4rem auto;
+        font-size: 1rem;
+
+        .info, .player-stats{
+            grid-column-start: 1;
+            grid-column-end: 3
+        }
+
+        .info{
+            display: flex;
+            justify-content: center;
+            background: #fff;
+
+            img{
+                max-width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .player-stats {
+            padding: 0.4rem;
+            background: #444;
+            color: #fff;
+            font-size: 0.8rem;
+
+            span{
+                width: 100%;
+                display: inline-block;
+                word-break: break-word;
+            }
+        }
+    }
+}
+
+@include breakpointMedium {
+    .saved-players{
+        .grid{
+            grid-column-gap: 0.4rem;
+        }
+    }
+}
+
+@include breakpointLarge {
+    .saved-players{
+        .grid{
+            grid-column-gap: 1rem;
+        }
+    }
+}

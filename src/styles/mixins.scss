@@ -9,3 +9,8 @@
 	@media only screen and (min-width : 768px)
 	{@content;} 
 }
+
+@mixin breakpointLarge { 
+	@media only screen and (min-width : 1024px)
+	{@content;} 
+}

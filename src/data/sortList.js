@@ -9,8 +9,8 @@ export class SortList extends React.Component {
         var menuArray = ['Name', 'Number', 'Position']
         var menuItems = [];
         var sortOrder = this.props.teamSort !== null ? this.props.teamSort: 'Number';
-        for (let index = 0; index < menuArray.length; index++) {
-            const el = menuArray[index];
+        for (let i = 0; i < menuArray.length; i++) {
+            const el = menuArray[i];
             menuItems.push(
                 <button 
                     className={el === sortOrder ? '-active' : null}

@@ -4,6 +4,7 @@ import './roster.scss';
 
 import { Captain } from './getPlayerInfo';
 import { PlayerStats } from './getPlayerStats';
+import helper from '../_helper';
 
 export class GetRoster extends React.Component {
 
@@ -28,9 +29,7 @@ export class GetRoster extends React.Component {
 
                     const playerValue = require('./playerValue.json');
                     const teamValueList = playerValue.find( item => this.cleanName(item.teamName) === this.cleanName(data.teams[0].name));
-                    this.setState({teamValues: teamValueList})
-
-                    // console.log('teamValueList: ', teamValueList);
+                    this.setState({teamValues: teamValueList});
                     const compareArray = [teamValueList.player, data.teams[0]];
                     return compareArray;
 
@@ -88,26 +87,25 @@ export class GetRoster extends React.Component {
 function sortOrder(players, sortType) {
 
     let sortOrdered = null;
-    if (sortType !== null && sortType !== undefined) {
-        switch (sortType) {
-            case 'Number':
-                sortOrdered = players.sort((a, b) => parseInt(a.jerseyNumber) > parseInt(b.jerseyNumber) ? 1 : -1);
-                break;        
-            case 'Name':
-                sortOrdered = players.sort((a, b) => a.person.fullName > b.person.fullName ? 1 : -1);
-                break;
-            case 'Position':
-                sortOrdered = players.sort((a, b) => a.position.type > b.position.type  ? 1 : -1);
-                break;        
-            default:
-                sortOrdered = players.sort((a, b) => parseInt(a.jerseyNumber) > parseInt(b.jerseyNumber) ? 1 : -1);
-                break;
+    switch (sortType) {
+        case 'Position':
+            sortOrdered = helper.rosterSortPos(players);
+            break;
+    
+        case 'Name':
+            sortOrdered = helper.rosterSortFullName(players);
+            break;
+    
+        case 'Number':
+            sortOrdered = helper.rosterSortNumber(players);
+            break;
+    
+        default:
+            sortOrdered = helper.rosterSortPos(players);
+            break;
         }
-        return sortOrdered;
-    } else if(sortType === null){
-        sortOrdered = players.sort((a, b) => parseInt(a.jerseyNumber) > parseInt(b.jerseyNumber) ? 1 : -1);
-    }
 
+    return sortOrdered;
 }
 
 class Players extends React.Component {
@@ -122,8 +120,7 @@ class Players extends React.Component {
         const { team, teamSort } = this.props;
         var roster = [];
         if (team.roster !== null && team.roster !== undefined) {
-            roster = team.roster.roster;
-            sortOrder(team.roster.roster, teamSort);
+            roster = sortOrder(team.roster.roster, teamSort);
         }
 
         return (

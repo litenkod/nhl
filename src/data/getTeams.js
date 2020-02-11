@@ -2,7 +2,8 @@
 import React from 'react';
 
 import './teamList.scss';
-const helper = require('../_helper');
+// const helper = require('../_helper');
+import helper from '../_helper'
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams';
 const DEFAULT_QUERY = '';

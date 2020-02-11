@@ -10,8 +10,8 @@ export class SortList extends React.Component {
         if(this.props.teamId) {
             var menuArray = ['Name', 'Number', 'Position']
             var menuItems = [];
-            var sortOrder = this.props.teamSort !== null ? this.props.teamSort: 'Number';
-            console.log('sortOrder :', sortOrder);
+            var sortOrder = this.props.teamSort !== null ? this.props.teamSort: 'Position';
+
             for (let index = 0; index < menuArray.length; index++) {
                 const el = menuArray[index];
                 menuItems.push(
@@ -35,7 +35,7 @@ export class SortList extends React.Component {
                 </section>;
         }
 
+        return sortContainer;
 
-            return sortContainer;
     }
 }

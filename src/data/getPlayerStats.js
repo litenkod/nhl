@@ -30,7 +30,7 @@ export class PlayerStats extends React.Component {
                     if(data.stats[0].splits[0] !== undefined){
                         this.setState({playerStats: data.stats[0].splits[0].stat})
                     }else{
-                        console.log('data.stats[0]: ', data.stats[0]);
+                        // console.log('data.stats[0]: ', data.stats[0]);
                     }
                 });
         }
@@ -64,7 +64,7 @@ export class PlayerStats extends React.Component {
     render() {
 
         var { playerStats } = this.state;
-        console.log('playerStats :', playerStats);
+        // console.log('playerStats :', playerStats);
         var { position, playerId, playerValue } = this.props;
 
         // console.log('playerValue: ', playerValue);

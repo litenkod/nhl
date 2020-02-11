@@ -30,7 +30,7 @@ export class GetRoster extends React.Component {
                     const teamValueList = playerValue.find( item => this.cleanName(item.teamName) === this.cleanName(data.teams[0].name));
                     this.setState({teamValues: teamValueList})
 
-                    console.log('teamValueList: ', teamValueList);
+                    // console.log('teamValueList: ', teamValueList);
                     const compareArray = [teamValueList.player, data.teams[0]];
                     return compareArray;
 

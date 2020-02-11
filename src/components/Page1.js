@@ -28,15 +28,16 @@ export class Page1 extends React.Component {
     }
 
     render() {
+        const { teamId, teamSort } = this.state;
         return (
         <div>
             <section className="page-header">
                 <img src="https://www-league.nhlstatic.com/images/logos/league-dark/133.svg" alt="NHL"/>
                 <h1>NHL 2018/19</h1>
             </section>
-            <GetTeams updateTeamID={this.selectTeam.bind(null, 1)} temaId={this.state.teamId} />
-            <SortList updateSortType={this.updateSortOrder.bind(null, 1)} teamSort={this.state.teamSort} />
-            <GetRoster teamId={this.state.teamId} teamSort={this.state.teamSort}/>
+            <GetTeams updateTeamID={this.selectTeam.bind(null, 1)} temaId={teamId} />
+            <SortList updateSortType={this.updateSortOrder.bind(null, 1)} teamSort={teamSort} teamId={teamId} />
+            <GetRoster teamId={teamId} teamSort={teamSort}/>
         </div>
         );
     }

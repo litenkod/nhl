@@ -64,6 +64,7 @@ export class PlayerStats extends React.Component {
     render() {
 
         var { playerStats } = this.state;
+        console.log('playerStats :', playerStats);
         var { position, playerId, playerValue } = this.props;
 
         // console.log('playerValue: ', playerValue);
@@ -110,9 +111,9 @@ export class PlayerStats extends React.Component {
                     <span className="gameWinningGoals"> - GWG{playerStats.gameWinningGoals} </span>
                     <span className="shortHandedGoals">SHG{playerStats.shortHandedGoals} </span>
                     <span className="pim">PIM{playerStats.pim}</span>
-                    <div className="score-wrapper">
+                    {/* <div className="score-wrapper">
                         {playerPoints}
-                    </div>
+                    </div> */}
                 </div>
             )
         }

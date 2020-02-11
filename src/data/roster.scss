@@ -46,7 +46,8 @@
 .player{
     position: relative;
     display: grid;
-    grid-template-rows: auto 5rem;
+    grid-template-rows: auto;
+    // grid-template-rows: auto 5rem;
     grid-template-columns: auto 5fr;
     grid-column-gap: 0.6rem;
     border: 1px solid #ccc;

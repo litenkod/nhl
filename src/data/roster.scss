@@ -53,10 +53,22 @@
     border: 1px solid #ccc;
 
     button{
+        position: absolute;
+        right: -1px;
+        bottom: -1px;
+        width: 2rem;
+        height: 2rem;
         padding: 0;
         border: 0;
-        background: none;
-        border-right: 1px solid #ccc;
+        color: hotpink;
+        background: #fff;
+        border: 1px solid pink;
+        transition: backgorund .4s ease;
+
+        &:hover {
+            background: pink;
+            border-color: hotpink;
+        }
     }
 
     img{

@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Nav } from './Nav';
-import { Page1 } from './Page1';
+import { DefaultContainer } from './DefaultContainer';
 
 
 export class MainPage extends React.Component {
@@ -10,7 +10,7 @@ export class MainPage extends React.Component {
                 {/* <Nav/> */}
                 <div className="grid">
                     <div className="col-12">
-                        <Page1 />
+                        <DefaultContainer />
                     </div>
                 </div>
             </div>

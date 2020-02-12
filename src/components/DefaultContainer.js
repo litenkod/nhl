@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { GetTeams } from '../data/getTeams';
-import { GetRoster } from '../data/getRoster';
-import { SortList } from '../data/sortList';
+import { Team } from './Team';
 
-export class Page1 extends React.Component {
+export class DefaultContainer extends React.Component {
     constructor(props) {
         super(props);
 
@@ -33,11 +32,10 @@ export class Page1 extends React.Component {
         <div>
             <section className="page-header">
                 <img src="https://www-league.nhlstatic.com/images/logos/league-dark/133.svg" alt="NHL"/>
-                <h1>NHL 2018/19</h1>
+                <h1>NHL 2010/20</h1>
             </section>
             <GetTeams updateTeamID={this.selectTeam.bind(null, 1)} temaId={teamId} />
-            <SortList updateSortType={this.updateSortOrder.bind(null, 1)} teamSort={teamSort} teamId={teamId} />
-            <GetRoster teamId={teamId} teamSort={teamSort}/>
+            <Team teamId={teamId} teamSort={teamSort}  />
         </div>
         );
     }

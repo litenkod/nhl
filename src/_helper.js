@@ -53,7 +53,12 @@ const helpers = {
         });
 
         return array
+    },
+    cleanName(rawName) {
+        var trimName = rawName.toLowerCase().replace(' ', '').replace('á', 'a').replace('å', 'a').replace('ä', 'a').replace('ö', 'o').replace('.', '').replace('é', 'e').split(' ').join('').split('.').join('');
+        return trimName;
     }
+
 }
 
 export default helpers

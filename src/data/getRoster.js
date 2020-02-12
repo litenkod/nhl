@@ -2,8 +2,9 @@
 import React from 'react';
 import './roster.scss';
 
-import { Captain } from './getPlayerInfo';
-import { PlayerStats } from './getPlayerStats';
+import { Player } from './getPlayer';
+// import { Captain } from './getPlayerInfo';
+// import { PlayerStats } from './getPlayerStats';
 import helper from '../_helper';
 
 export class GetRoster extends React.Component {
@@ -28,7 +29,7 @@ export class GetRoster extends React.Component {
                     this.setState({team: data.teams[0]})
 
                     const playerValue = require('./playerValue.json');
-                    const teamValueList = playerValue.find( item => this.cleanName(item.teamName) === this.cleanName(data.teams[0].name));
+                    const teamValueList = playerValue.find( item => helper.cleanName(item.teamName) === helper.cleanName(data.teams[0].name));
                     this.setState({teamValues: teamValueList});
                     const compareArray = [teamValueList.player, data.teams[0]];
                     return compareArray;
@@ -37,8 +38,8 @@ export class GetRoster extends React.Component {
 
                     for (let i = 0; i < item[1].roster.roster.length; i++) {
                         const element = item[1].roster.roster[i];
-                        const elmentPlayer = this.cleanName(element.person.fullName);
-                        const match = item[0].find(item => this.cleanName(item.name) === elmentPlayer);
+                        const elmentPlayer = helper.cleanName(element.person.fullName);
+                        const match = item[0].find(item => helper.cleanName(item.name) === elmentPlayer);
                         
                         if (match) {
                             element.value = match.value.replace(',','.').replace('MSEK','').trim();
@@ -50,11 +51,6 @@ export class GetRoster extends React.Component {
                 });
         }
     };
-    
-    cleanName(rawName) {
-        var trimName = rawName.toLowerCase().replace(' ', '').replace('á', 'a').replace('å', 'a').replace('ä', 'a').replace('ö', 'o').replace('.', '').replace('é', 'e').split(' ').join('').split('.').join('');
-        return trimName;
-    }
 
     componentDidMount() {
         this.getTeamRoster(this.props.teamId);
@@ -65,6 +61,7 @@ export class GetRoster extends React.Component {
             this.getTeamRoster(this.props.teamId);
         }
     }
+    
 
     render() {
         const { team } = this.state;
@@ -110,12 +107,6 @@ function sortOrder(players, sortType) {
 
 class Players extends React.Component {
 
-    playerStats = (event, playerId) =>{
-        this.setState({
-            playerId: event
-        });
-    }
-
     render() {
         const { team, teamSort } = this.props;
         var roster = [];
@@ -126,16 +117,7 @@ class Players extends React.Component {
         return (
             <div className="grid roster-list">
                 {roster.map(player =>
-                    <div className="player" key={player.person.id} data-key={player.person.id}  >
-                        <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`} alt={player.person.fullName} />
-                        <div className="info">
-                            <span className="no">{player.jerseyNumber}</span>
-                            <span className="name">{player.person.fullName}</span>
-                            <span className="pos">{player.position.type}</span>
-                            <Captain playerId={player.person.id} />
-                        </div>
-                        <PlayerStats playerId={player.person.id} position={player.position.code} teamName={team.name} playerValue={player.value} />
-                    </div>
+                    <Player playerData={player} key={'playerID_' + player.person.id} />
                 )}
             </div>
         );

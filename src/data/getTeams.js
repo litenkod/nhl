@@ -6,7 +6,6 @@ import './teamList.scss';
 import helper from '../_helper'
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams';
-const DEFAULT_QUERY = '';
 
 export class GetTeams extends React.Component {
     constructor(props) {
@@ -18,7 +17,7 @@ export class GetTeams extends React.Component {
     }
 
     componentDidMount() {
-        fetch(API + DEFAULT_QUERY)
+        fetch(API)
         .then(response => response.json())
         .then(data => {
             this.setState({ teams: data.teams })

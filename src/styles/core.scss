@@ -41,8 +41,8 @@ a:hover{
 .page-header{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
-    align-content: center;
+	justify-content: center;
+	align-items: center;
 
     img{
         max-width: 3rem;

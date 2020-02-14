@@ -36,7 +36,6 @@ export class Team extends React.Component {
     render() {
         const { teamId } = this.props;
         const { playerData } = this.state;
-        console.log('playerId :', playerData);
         return (
             <div>
                 <SortList updateSortType={this.updateSortOrder.bind(null, 1)} teamSort={this.state.teamSort} teamId={teamId} />

@@ -13,7 +13,19 @@
 	padding: 0.2rem 0.4rem;
 	flex-grow: 1;
 	max-width: 4.2rem;
+	transform: scale(1);
+	transition: transform .4s ease-in-out;
 
+	&:hover {
+		transform: scale(1.1);
+	}
+
+	&.-active,
+	&.-active:hover {
+		transform: scale(1);
+	}
+
+	&:hover,
 	&.-active{
 		color: $link-color;
 		background: #ffddee;

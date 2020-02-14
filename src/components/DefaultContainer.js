@@ -32,7 +32,7 @@ export class DefaultContainer extends React.Component {
         <div>
             <section className="page-header">
                 <img src="https://www-league.nhlstatic.com/images/logos/league-dark/133.svg" alt="NHL"/>
-                <h1>NHL 2010/20</h1>
+                <h1>NHL 2019/20</h1>
             </section>
             <GetTeams updateTeamID={this.selectTeam.bind(null, 1)} temaId={teamId} />
             <Team teamId={teamId} teamSort={teamSort}  />

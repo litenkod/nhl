@@ -3,8 +3,6 @@ import React from 'react';
 import './roster.scss';
 
 import { Player } from './getPlayer';
-// import { Captain } from './getPlayerInfo';
-// import { PlayerStats } from './getPlayerStats';
 import helper from '../_helper';
 
 export class GetRoster extends React.Component {
@@ -65,6 +63,7 @@ export class GetRoster extends React.Component {
 
     render() {
         const { team } = this.state;
+
         var img = team.id !== undefined ? <img src={`https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`} alt={team.name}/>: '';
         return (
             <section className="team">
@@ -75,8 +74,28 @@ export class GetRoster extends React.Component {
                     </div>
                     <a href={team.officialSiteUrl}>{team.officialSiteUrl}</a>
                 </div>
-                <Players team={team} teamSort={this.props.teamSort}/>
+                <Players team={team} teamSort={this.props.teamSort} selectPlayer={this.props.selectPlayer}/>
+                
             </section>
+        );
+    }
+}
+
+class Players extends React.Component {
+
+    render() {
+        const { team, teamSort } = this.props;
+        var roster = [];
+        if (team.roster !== null && team.roster !== undefined) {
+            roster = sortOrder(team.roster.roster, teamSort);
+        }
+
+        return (
+            <div className="grid roster-list">
+                {roster.map(player =>
+                    <Player playerData={player} key={'playerID_' + player.person.id} selectPlayer={this.props.selectPlayer} />
+                )}
+            </div>
         );
     }
 }
@@ -105,22 +124,4 @@ function sortOrder(players, sortType) {
     return sortOrdered;
 }
 
-class Players extends React.Component {
-
-    render() {
-        const { team, teamSort } = this.props;
-        var roster = [];
-        if (team.roster !== null && team.roster !== undefined) {
-            roster = sortOrder(team.roster.roster, teamSort);
-        }
-
-        return (
-            <div className="grid roster-list">
-                {roster.map(player =>
-                    <Player playerData={player} key={'playerID_' + player.person.id} />
-                )}
-            </div>
-        );
-    }
-}
 

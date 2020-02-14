@@ -13,10 +13,10 @@ export class Captain extends React.Component {
 
 
     componentDidMount() {
-        this.renderCap();
+        this.getCaptainData();
     }
 
-    renderCap() {
+    getCaptainData() {
         if(this.props.playerId !== null && this.props.playerId !== undefined){
             const API = `https://statsapi.web.nhl.com/api/v1/people/${this.props.playerId}/`;
             fetch(API)

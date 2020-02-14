@@ -28,7 +28,6 @@ export class SortList extends React.Component {
 
             sortContainer = 
                 <section className="sort-list">
-                    <span>Sort: </span>
                     <nav>
                         {menuItems}
                     </nav>

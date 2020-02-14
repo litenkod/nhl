@@ -1,0 +1,59 @@
+
+
+
+
+.player-detail {
+    .info {
+        text-align: center;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+
+        .name {
+            font-size: 3rem;
+            margin: 0 1rem;
+        }
+
+        .pos,
+        .no {
+            position: absolute;
+            top: 50%;
+            transform: translate(-1rem, 0);
+        }
+        .pos {
+            transform: translate(0rem, 0);
+        }
+    }
+
+    .cap {
+        top: auto;
+        bottom: .2rem;
+    }
+}
+.stats {
+    table {
+        width: 100%;
+        table-layout: fixed;
+        text-transform: capitalize;
+        text-align: center;
+        margin-bottom: 3rem;
+
+        caption {
+            margin-bottom: .4rem;
+        }
+        thead {
+            position: sticky;
+        }
+
+        th {
+            color: #fff;
+            background-color: #333;
+        }
+
+        td {
+            padding: .4rem;
+        }
+    }
+
+    overflow: auto;
+}

@@ -2,7 +2,6 @@
 import React from 'react';
 
 import './teamList.scss';
-// const helper = require('../_helper');
 import helper from '../_helper'
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams';
@@ -37,7 +36,6 @@ export class GetTeams extends React.Component {
                         data-id={team.id} 
                         onClick={this.props.updateTeamID.bind(null, team.id)}>
                     <img src={`https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`} alt={team.name}/>
-                    {/* {team.name} */}
                     </button>
                 )}
             </nav>

@@ -1,4 +1,4 @@
-
+@import './reset.scss';
 @import './mixins.scss';
 @import './variables.scss';
 
@@ -7,6 +7,10 @@ body {
 	font-size: 20px;
 	font-family: 'Open Sans Condensed', Arial, sans-serif;
 	color: $font-color;
+
+	&.modal-open {
+		overflow: hidden;
+	}
 }
 
 *:focus {
@@ -72,11 +76,54 @@ section{
   margin: 2rem 0;
 }
 
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__container {
+		width: calc(100% - 5rem);
+		height: calc(100% - 5rem);
+		padding: 3rem;
+		background: #fff;
+		box-sizing: border-box;
+		overflow: scroll;
+	}
+
+	&__close {
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+		width: 3rem;
+		height: 3rem;
+		color: #fff;
+		background: #000;
+		border-radius: 100%;
+		font-size: 2rem;
+		line-height: 1em;
+		font-family: monospace;
+	}
+
+	img{
+		max-width: 10rem;
+		border-radius: 100%;
+		border: 1px solid #ccc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto 0;
+	}
+
+}
+
 
 @media only screen and (min-width : 768px)  {
-
-	// 12 column grid layout. 
-	// .col-1, .col-2, .col-3, etc
 	@for $i from 1 through 12{
 		.col-#{$i}{
 			grid-column: span #{$i};

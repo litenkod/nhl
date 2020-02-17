@@ -85,6 +85,7 @@ class Players extends React.Component {
 
     render() {
         const { team, teamSort } = this.props;
+
         var roster = [];
         if (team.roster !== null && team.roster !== undefined) {
             roster = sortOrder(team.roster.roster, teamSort);

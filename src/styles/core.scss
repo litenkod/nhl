@@ -38,6 +38,18 @@ a:hover{
   	cursor: pointer;
 }
 
+table {
+
+	caption {
+		font-size: 1.2rem;
+	}
+
+	td,
+	th {
+		font-size: 1rem;
+	}
+}
+
 .page-header{
     display: flex;
     flex-flow: row wrap;
@@ -108,16 +120,10 @@ section{
 		font-size: 2rem;
 		line-height: 1em;
 		font-family: monospace;
-	}
 
-	img{
-		max-width: 10rem;
-		border-radius: 100%;
-		border: 1px solid #ccc;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 0 auto 0;
+		&:hover {
+			border-color: hotpink;
+		}
 	}
 
 }

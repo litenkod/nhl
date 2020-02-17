@@ -4,8 +4,30 @@ import { PlayerStats } from './getPlayerStats';
 
 export class PlayerDetail extends React.Component {
 
+    componentDidMount() {
+        this.getPlayerInfo();
+    }
+
+    getPlayerInfo() {
+        const { playerData } = this.props
+        this.setState({playerData: playerData})
+        const playerId = playerData.person.id
+        if(playerId!== null && playerId !== undefined){
+            const API = `https://statsapi.web.nhl.com/api/v1/people/${playerId}`;
+            fetch(API)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('data :', data);
+
+                });
+        }
+    }
+
     render() {
         const { playerData } = this.props;
+
+
+        console.log('this.props :', this.props);
         return (
         <div className="modal">
             <button type="button" className="modal__close" onClick={this.props.selectPlayer.bind(null, null)}> X </button>

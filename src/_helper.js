@@ -41,8 +41,9 @@ const helpers = {
     },
     rosterSortNumber(array) {
         array.sort(function(a, b) {
-            const x = parseInt(a.jerseyNumber.toUpperCase());
-            const y = parseInt(b.jerseyNumber.toUpperCase());
+            //No number exist place player last [100]
+            const x = a.jerseyNumber !== undefined ? parseInt(a.jerseyNumber.toUpperCase()) : 100;
+            const y = b.jerseyNumber !== undefined ? parseInt(b.jerseyNumber.toUpperCase()) : 100;
             if (x < y) {
                 return -1;
             }

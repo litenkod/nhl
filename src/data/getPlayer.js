@@ -16,7 +16,9 @@ export class Player extends React.Component {
 
         return (
             <div className="player" key={playerData.person.id} data-key={playerData.person.id}  >
-                <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${playerData.person.id}.jpg`} alt={playerData.person.fullName} />
+                <div className="img-wrapper">
+                    <img src={`https://nhl.bamcontent.com/images/headshots/current/168x168/${playerData.person.id}.jpg`} alt={playerData.person.fullName} />
+                </div>
                 <div className="info">
                     <span className="no">{playerData.jerseyNumber}</span>
                     <span className="name">{playerData.person.fullName}</span>

@@ -47,7 +47,7 @@
     position: relative;
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: auto 5fr 2rem;
+    grid-template-columns: 5rem 5fr 2rem;
     grid-column-gap: 0.6rem;
     border: 1px solid #ccc;
 
@@ -58,6 +58,7 @@
         transform: scale(1);
         transition: transform .2s ease-in-out;
         border: 1px solid #ccc;
+        background-color: #f1f1f161;
 
         svg {
             fill: #333;
@@ -79,10 +80,17 @@
         }
     }
 
+    .img-wrapper {
+        height: 5rem;
+        margin-top: .2rem;
+        background: #f1f1f161;
+    }
+
     img{
-        padding-top: .2rem;
         max-width: 100%;
         vertical-align: bottom;
+        // opacity: 0;
+        // animation: fade-in .4s .8s forwards;
     }
 
     .info{
@@ -193,4 +201,3 @@
         grid-template-columns: 3fr 3fr 3fr 3fr;
     }
 }
-
